@@ -108,6 +108,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const beginCheckoutFromCart = useCallback(() => {
     setCheckoutIntent(items, "cart")
+    setIsOpen(false)
     router.push("/checkout")
   }, [items, router, setCheckoutIntent])
 
