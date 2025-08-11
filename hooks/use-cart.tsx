@@ -9,6 +9,7 @@ export interface CartItem {
   price: number
   quantity: number
   image: string
+  size?: string
 }
 
 type CartContextValue = {
@@ -64,9 +65,17 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const addItem = useCallback((item: Omit<CartItem, "quantity">, quantity: number = 1) => {
     setItems((prev) => {
-      const existing = prev.find((i) => i.id === item.id)
+      // Create a unique ID that includes size if present
+      const itemId = item.size ? `${item.id}-${item.size}` : item.id
+      const existing = prev.find((i) => {
+        const existingId = i.size ? `${i.id}-${i.size}` : i.id
+        return existingId === itemId
+      })
       if (existing) {
-        return prev.map((i) => (i.id === item.id ? { ...i, quantity: i.quantity + quantity } : i))
+        return prev.map((i) => {
+          const existingId = i.size ? `${i.id}-${i.size}` : i.id
+          return existingId === itemId ? { ...i, quantity: i.quantity + quantity } : i
+        })
       }
       return [...prev, { ...item, quantity }]
     })
@@ -74,13 +83,22 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const updateQuantity = useCallback((id: string, quantity: number) => {
     setItems((prev) => {
-      if (quantity <= 0) return prev.filter((i) => i.id !== id)
-      return prev.map((i) => (i.id === id ? { ...i, quantity } : i))
+      if (quantity <= 0) return prev.filter((i) => {
+        const itemId = i.size ? `${i.id}-${i.size}` : i.id
+        return itemId !== id
+      })
+      return prev.map((i) => {
+        const itemId = i.size ? `${i.id}-${i.size}` : i.id
+        return itemId === id ? { ...i, quantity } : i
+      })
     })
   }, [])
 
   const removeItem = useCallback((id: string) => {
-    setItems((prev) => prev.filter((i) => i.id !== id))
+    setItems((prev) => prev.filter((i) => {
+      const itemId = i.size ? `${i.id}-${i.size}` : i.id
+      return itemId !== id
+    }))
   }, [])
 
   const clear = useCallback(() => setItems([]), [])
@@ -221,7 +239,10 @@ export function useCheckoutIntentController() {
         cart.updateQuantity(id, safeQuantity)
         // session will be updated via sync effect
       } else {
-        const next = localItems.map((i) => (i.id === id ? { ...i, quantity: safeQuantity } : i))
+        const next = localItems.map((i) => {
+          const itemId = i.size ? `${i.id}-${i.size}` : i.id
+          return itemId === id ? { ...i, quantity: safeQuantity } : i
+        })
         setLocalItems(next)
         persistSession(next, "buy-now")
       }
@@ -232,7 +253,10 @@ export function useCheckoutIntentController() {
   const increment = useCallback(
     (id: string) => {
       const list = source === "cart" ? cart.items : localItems
-      const found = list.find((i) => i.id === id)
+      const found = list.find((i) => {
+        const itemId = i.size ? `${i.id}-${i.size}` : i.id
+        return itemId === id
+      })
       if (!found) return
       updateQuantity(id, found.quantity + 1)
     },
@@ -242,7 +266,10 @@ export function useCheckoutIntentController() {
   const decrement = useCallback(
     (id: string) => {
       const list = source === "cart" ? cart.items : localItems
-      const found = list.find((i) => i.id === id)
+      const found = list.find((i) => {
+        const itemId = i.size ? `${i.id}-${i.size}` : i.id
+        return itemId === id
+      })
       if (!found) return
       updateQuantity(id, Math.max(1, found.quantity - 1))
     },

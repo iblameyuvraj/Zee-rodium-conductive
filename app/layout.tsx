@@ -8,9 +8,51 @@ import { CartSheet } from '@/components/cart/CartSheet'
 import { Header } from '@/components/cart/Header'
 
 export const metadata: Metadata = {
-  title: 'Company Name',
-  description: 'Company Name',
-  generator: 'Company Name',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
+  title: {
+    default: 'Zee Rodium',
+    template: '%s | Zee Rodium',
+  },
+  description: 'Zee Rodium',
+  applicationName: 'Zee Rodium',
+  generator: 'Zee Rodium',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: '/',
+    siteName: 'Zee Rodium',
+    title: 'Zee Rodium',
+    description: 'Zee Rodium',
+    images: [
+      {
+        url: '/placeholder.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Zee Rodium',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Zee Rodium',
+    description: 'Zee Rodium',
+    images: ['/placeholder.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: '/',
+  },
+  icons: {
+    icon: [
+      { url: '/placeholder-logo.png', type: 'image/png' },
+      { url: '/placeholder-logo.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: ['/placeholder-logo.png'],
+    apple: [{ url: '/placeholder-logo.png', type: 'image/png' }],
+  },
 }
 
 export default function RootLayout({
