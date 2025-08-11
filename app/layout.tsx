@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description: 'Zee Rodium',
     images: [
       {
-        url: '/placeholder.jpg',
+        url: '/og.jpg',
         width: 1200,
         height: 630,
         alt: 'Zee Rodium',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Zee Rodium',
     description: 'Zee Rodium',
-    images: ['/placeholder.jpg'],
+    images: ['/og.jpg'],
   },
   robots: {
     index: true,
