@@ -30,7 +30,7 @@ export function CartSheet() {
               <div key={item.size ? `${item.id}-${item.size}` : item.id} className="flex gap-4 border rounded-lg p-3">
                 <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded">
                   {/* Use next/image for better perf; fallback to img if needed */}
-                  <Image alt={item.name} src={item.image} fill className="object-cover" />
+                  <Image alt={item.name} src={item.image} loading="lazy" fill className="object-cover" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2">

@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { useCart } from "@/hooks/use-cart"
 import { useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import Image from "next/image"
+import { Facebook, Instagram, Mail, Twitter } from "lucide-react"
 
 export default function ProductPage() {
   const { addItem, open, buyNow } = useCart()
@@ -20,9 +22,9 @@ export default function ProductPage() {
   // Define images for each size
   const getImagesForSize = (size: string) => {
     if (size === "1L") {
-      return ["/common.png", "/1litre.png"]
+      return ["/images/product-img/common.png", "/images/product-img/1litre.png"]
     } else {
-      return ["/common.png", "/250ml.png"]
+      return ["/images/product-img/common.png", "/images/product-img/250ml.png"]
     }
   }
 
@@ -32,9 +34,9 @@ export default function ProductPage() {
   // Get the size-specific image for cart/checkout
   const getSizeSpecificImage = (size: string) => {
     if (size === "1L") {
-      return "/1litre.png"
+      return "/images/product-img/1litre.png"
     } else {
-      return "/250ml.png"
+      return "/images/product-img/250ml.png"
     }
   }
 
@@ -66,10 +68,13 @@ export default function ProductPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
           {/* Product Image */}
           <div className="relative">
-            <img
+            <Image
               src={currentImage}
               alt="Brass Conductive Paint"
               className="w-full h-auto rounded-lg"
+              width={500}
+              height={500}
+              loading="lazy"
             />
             
             {/* Navigation Buttons */}
@@ -115,7 +120,9 @@ export default function ProductPage() {
             <p className="text-xl sm:text-2xl font-semibold text-black">₹{selectedProduct.price}/-
             </p>
             <p className="text-gray-600 leading-relaxed">
-              A conductive paint that can be applied to brass to make it conductive.
+              A revolutionary paint that makes non-conductive surfaces electro-conductive. 
+              Apply a durable metallic finish on wood, plastic, ceramics, stone, and more — 
+              unlocking new creative and industrial possibilities. <a href="/details" className="text-grey-800 font-medium underline hover:text-black">Click here for more details.</a>
             </p>
 
             {/* Size Selection */}
@@ -162,20 +169,33 @@ export default function ProductPage() {
 
       {/* Footer */}
       <footer className="bg-black text-white mt-12 sm:mt-20 rounded-4xl border-[15px]">
-        <div className="max-w-6xl py-8 bg-black mx-3.5 my-0 px-6 border-0">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-            <div className="space-y-4">
-              <div className="font-bold text-4xl sm:text-6xl lg:text-9xl">Zee Rodium ©</div>
-              <div className="flex flex-col sm:flex-row sm:gap-8 gap-2 text-xs sm:text-sm text-gray-400">
-                <span>37°47'33.4"N 122°24'18.6"W</span>
-                <span>(269) 682-1402</span>
-                <span>Instagram</span>
+      <div className="max-w-6xl py-8 bg-black mx-3.5 my-0 px-6 border-0">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+          {/* Left Section */}
+          <div className="space-y-4">
+            <div className="font-bold text-4xl sm:text-6xl lg:text-9xl">Zee Rodium©</div>
+            <div className="flex flex-col sm:flex-row sm:gap-8 gap-2 text-xs sm:text-sm text-gray-400">
+              {/* Social Icons */}
+              <div className="flex gap-4 mt-2 sm:mt-0">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                  <Facebook className="w-5 h-5 hover:text-white transition-colors" />
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                  <Instagram className="w-5 h-5 hover:text-white transition-colors" />
+                </a>
+                <a href="mailto:info@zeerodium.com">
+                  <Mail className="w-5 h-5 hover:text-white transition-colors" />
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                  <Twitter className="w-5 h-5 hover:text-white transition-colors" />
+                </a>
               </div>
+              <span><a href="tel:1234567890">1234567890</a></span>
             </div>
-            <div className="text-xs sm:text-sm text-gray-400 lg:text-right">2025© — All rights reserved</div>
           </div>
         </div>
-      </footer>
+      </div>
+    </footer>
     </div>
   )
 }
