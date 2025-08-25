@@ -7,6 +7,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import { Facebook, Instagram, Mail, Twitter } from "lucide-react"
 
+
 export default function ProductPage() {
   const { addItem, open, buyNow } = useCart()
   const [selectedSize, setSelectedSize] = useState<string>("1L")
@@ -62,6 +63,7 @@ export default function ProductPage() {
   }
 
   return (
+    
     <div className="min-h-screen bg-gray-100 border-0">
       {/* Main Product Section */}
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
@@ -122,7 +124,7 @@ export default function ProductPage() {
             <p className="text-gray-600 leading-relaxed">
               A revolutionary paint that makes non-conductive surfaces electro-conductive. 
               Apply a durable metallic finish on wood, plastic, ceramics, stone, and more — 
-              unlocking new creative and industrial possibilities. <a href="/details" className="text-grey-800 font-medium underline hover:text-black">Click here for more details.</a>
+              unlocking new creative and industrial possibilities. <a href="/details" className="text-grey-800 font-medium underline hover:text-black">Click here for more details</a>
             </p>
 
             {/* Size Selection */}
@@ -169,33 +171,50 @@ export default function ProductPage() {
 
       {/* Footer */}
       <footer className="bg-black text-white mt-12 sm:mt-20 rounded-4xl border-[15px]">
-      <div className="max-w-6xl py-8 bg-black mx-3.5 my-0 px-6 border-0">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-          {/* Left Section */}
-          <div className="space-y-4">
-            <div className="font-bold text-4xl sm:text-6xl lg:text-9xl">Zee Rodium©</div>
-            <div className="flex flex-col sm:flex-row sm:gap-8 gap-2 text-xs sm:text-sm text-gray-400">
-              {/* Social Icons */}
-              <div className="flex gap-4 mt-2 sm:mt-0">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                  <Facebook className="w-5 h-5 hover:text-white transition-colors" />
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                  <Instagram className="w-5 h-5 hover:text-white transition-colors" />
-                </a>
-                <a href="mailto:info@zeerodium.com">
-                  <Mail className="w-5 h-5 hover:text-white transition-colors" />
-                </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                  <Twitter className="w-5 h-5 hover:text-white transition-colors" />
-                </a>
-              </div>
-              <span><a href="tel:1234567890">1234567890</a></span>
-            </div>
-          </div>
-        </div>
+  <div className="max-w-6xl py-8 bg-black mx-3.5 my-0 px-6 border-0">
+    <div className="flex flex-col items-center gap-3">
+      {/* Brand */}
+      <div className="font-bold text-4xl sm:text-6xl lg:text-8xl text-center">
+        Zee Rodium
       </div>
-    </footer>
+
+      {/* Social Icons */}
+      <div className="flex gap-5">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+          <Facebook className="w-5 h-5 hover:text-white transition-colors" />
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <Instagram className="w-5 h-5 hover:text-white transition-colors" />
+        </a>
+        <a href="mailto:info@zeerodium.com">
+          <Mail className="w-5 h-5 hover:text-white transition-colors" />
+        </a>
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+          <Twitter className="w-5 h-5 hover:text-white transition-colors" />
+        </a>
+      </div>
+
+      {/* Policy Links */}
+      <div className="flex gap-3">
+        <a
+          href="/about-us"
+          className="px-3 py-1.5 rounded-lg border border-gray-600 text-gray-300 hover:text-white hover:border-white transition-colors text-xs sm:text-sm"
+        >
+          About Us
+        </a>
+        <a
+          href="/shipping-policy"
+          className="px-3 py-1.5 rounded-lg border border-gray-600 text-gray-300 hover:text-white hover:border-white transition-colors text-xs sm:text-sm"
+        >
+          Shipping Policy
+        </a>
+      </div>
     </div>
-  )
+  </div>
+</footer>
+
+
+
+  </div>
+)
 }

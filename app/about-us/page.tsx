@@ -1,3 +1,4 @@
+import { Facebook, Instagram, Mail, Twitter } from "lucide-react"
 export const metadata = {
     title: "About Us | Zee Rodium",
     description:
@@ -52,20 +53,47 @@ export const metadata = {
         </main>
   
         <footer className="bg-black text-white mt-12 sm:mt-20 rounded-4xl border-[15px]">
-          <div className="max-w-6xl py-8 bg-black mx-3.5 my-0 px-6 border-0">
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-              <div className="space-y-4">
-                <div className="font-bold text-4xl sm:text-6xl lg:text-9xl">Zee Rodium ©</div>
-                <div className="flex flex-col sm:flex-row sm:gap-8 gap-2 text-xs sm:text-sm text-gray-400">
-                  <span>37°47'33.4"N 122°24'18.6"W</span>
-                  <span>(269) 682-1402</span>
-                  <span>Instagram</span>
-                </div>
-              </div>
-              <div className="text-xs sm:text-sm text-gray-400 lg:text-right">2025© — All rights reserved</div>
-            </div>
-          </div>
-        </footer>
+  <div className="max-w-6xl py-8 bg-black mx-3.5 my-0 px-6 border-0">
+    <div className="flex flex-col items-center gap-3">
+      {/* Brand */}
+      <div className="font-bold text-4xl sm:text-6xl lg:text-8xl text-center">
+        Zee Rodium
+      </div>
+
+      {/* Social Icons */}
+      <div className="flex gap-5">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+          <Facebook className="w-5 h-5 hover:text-white transition-colors" />
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <Instagram className="w-5 h-5 hover:text-white transition-colors" />
+        </a>
+        <a href="mailto:info@zeerodium.com">
+          <Mail className="w-5 h-5 hover:text-white transition-colors" />
+        </a>
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+          <Twitter className="w-5 h-5 hover:text-white transition-colors" />
+        </a>
+      </div>
+
+      {/* Policy Links */}
+      <div className="flex gap-3">
+        <a
+          href="/about-us"
+          className="px-3 py-1.5 rounded-lg border border-gray-600 text-gray-300 hover:text-white hover:border-white transition-colors text-xs sm:text-sm"
+        >
+          About Us
+        </a>
+        <a
+          href="/shipping-policy"
+          className="px-3 py-1.5 rounded-lg border border-gray-600 text-gray-300 hover:text-white hover:border-white transition-colors text-xs sm:text-sm"
+        >
+          Shipping Policy
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
       </div>
     )
   }

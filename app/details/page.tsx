@@ -35,8 +35,8 @@ export default function ConductivePaintDetails() {
                 <Image
                     src={currentImage}
                     alt="Conductive Paint Preview"
-                    width={300}
-                    height={300}
+                    width={100}
+                    height={100}
                     className="w-full h-auto rounded-lg shadow-md"
                 />
 

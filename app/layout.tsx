@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description: 'Zee Rodium Founded in 1998 in Jaipur, India, Zee Rodium leads the electroplating industry and pioneers conductive paint for non-conductive surfaces.',
     images: [
       {
-        url: '/images/og-image/og.jpg',
+        url: 'https://files.catbox.moe/mfbuq1.jpg',
         width: 1200,
         height: 630,
         alt: 'Zee Rodium',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Zee Rodium',
     description: 'Zee Rodium',
-    images: ['/images/og-image/og.jpg'],
+    images: ['https://files.catbox.moe/mfbuq1.jpg'],
   },
   robots: {
     index: true,
